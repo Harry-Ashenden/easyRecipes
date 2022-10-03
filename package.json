@@ -1,13 +1,13 @@
 {
-  "name": "binary-upload-boom",
+  "name": "easyrecipe",
   "version": "1.0.0",
-  "description": "100Devs Social Network",
+  "description": "A recipes app that lets you simply add, use and edit your favourite recipes.",
   "main": "server.js",
   "scripts": {
     "start": "nodemon server.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "",
+  "author": "Harry Ashenden",
   "license": "MIT",
   "dependencies": {
     "bcrypt": "^5.0.1",
