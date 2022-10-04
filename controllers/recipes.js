@@ -37,8 +37,11 @@ module.exports = {
         title: req.body.title,
         image: result.secure_url,
         cloudinaryId: result.public_id,
-        ingredients: req.body.ingredients,
-        method: req.body.method,
+        servings: req.body.servings,
+        cookTime: req.body.cookTime,
+        prepTime: req.body.prepTime,
+        ingredients: req.body.ingredients.split("\n"),
+        method: req.body.method.split("\n"),
         likes: 0,
         user: req.user.id,
       });

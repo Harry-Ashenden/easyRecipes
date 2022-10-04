@@ -25,10 +25,36 @@
       </div>
     </div>
     <div class="col-3 mt-5">
-      <p><%= recipe.ingredients %></p>
+      <p>Servings: <%= recipe.servings %></p>
     </div>
     <div class="col-3 mt-5">
-      <p><%= recipe.method %></p>
+      <p>Prep Time: <%= recipe.prepTime %> mins</p>
+    </div>
+    <div class="col-3 mt-5">
+      <p>Cook Time: <%= recipe.cookTime %> mins</p>
+    </div>
+    <div class="col-3 mt-5">
+      <p>Total Time: <%= recipe.totalTime %> mins</p>
+    </div>
+    <div class="col-3 mt-5">
+      <p>Ingredients:</p>
+      <ul>
+        <% for(var i=0; i<recipe.ingredients.length; i++) {%>
+          <li class="col-6 justify-content-between mt-5">
+            <p><%= recipe.ingredients[i] %></p>
+          </li>
+        <% } %>
+      </ul>
+    </div>
+    <div class="col-3 mt-5">
+      <p>Methods:</p>
+      <ol>
+        <% for(var i=0; i<recipe.method.length; i++) {%>
+          <li class="col-6 justify-content-between mt-5">
+            <p><%= recipe.method[i] %></p>
+          </li>
+        <% } %>
+      </ol>
     </div>
 
     <div class="mt-5">

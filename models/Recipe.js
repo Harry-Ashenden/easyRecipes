@@ -13,12 +13,31 @@ const RecipeSchema = new mongoose.Schema({
     type: String,
     require: true,
   },
+  servings: {
+    type: Number,
+    required: true,
+  },
+  prepTime: {
+    type: Number,
+    required: true,
+  },
+  cookTime: {
+    type: Number,
+    required: true,
+  },
+  totalTime: {
+    type: Number,
+    required: false,
+    default: function() {
+      return this.prepTime + this.cookTime
+    }
+  },
   ingredients: {
-    type: String,
+    type: [],
     required: true,
   },
   method: {
-    type: String,
+    type: [],
     required: true,
   },
   likes: {
