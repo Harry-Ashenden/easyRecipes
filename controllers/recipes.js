@@ -75,10 +75,14 @@ module.exports = {
       let response = await axios.request(recipeUrlApi);
       response = response.data.recipe
 
-      // Upload image to cloudinary
-      const result = await cloudinary.uploader.upload(response.image, {folder: "easyRecipes"});
-
-
+      // Upload image to cloudinary and changing data type if array
+      let result
+      if (Array.isArray(response.image) == true ){
+        result = await cloudinary.uploader.upload(response.image.toString(), {folder: "easyRecipes"});
+      } else {
+        result = await cloudinary.uploader.upload(response.image, {folder: "easyRecipes"});
+      }
+      
       await Recipe.create({
         title: response.name,
         image: result.secure_url,
