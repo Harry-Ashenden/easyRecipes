@@ -1,6 +1,8 @@
 const cloudinary = require("../middleware/cloudinary");
 const Recipe = require("../models/Recipe");
 const Comment = require("../models/Comment");
+const axios = require("axios");
+const flash = require('express-flash');
 
 module.exports = {
   getProfile: async (req, res) => {
@@ -28,6 +30,7 @@ module.exports = {
       console.log(err);
     }
   },
+
   createRecipe: async (req, res) => {
     try {
       // Upload image to cloudinary
@@ -40,6 +43,7 @@ module.exports = {
         servings: req.body.servings,
         cookTime: req.body.cookTime,
         prepTime: req.body.prepTime,
+        totalTime: req.body.totalTime,
         ingredients: req.body.ingredients.split("\n"),
         method: req.body.method.split("\n"),
         likes: 0,
@@ -51,6 +55,60 @@ module.exports = {
       console.log(err);
     }
   },
+  createRecipeUrl: async (req, res) => {
+    try {
+
+      let recipeUrlApi = {
+        method: 'GET',
+        url: 'https://cookr-recipe-parser.p.rapidapi.com/getRecipe',
+        params: {
+          source: req.body.recipeUrl
+        },
+        headers: {
+          'content-type': 'text/plain',
+          'X-RapidAPI-Key': process.env.RECIPE_URL_API,
+          'X-RapidAPI-Host': 'cookr-recipe-parser.p.rapidapi.com'
+        },
+      };
+
+      //Requesting data from recipeApi
+      let response = await axios.request(recipeUrlApi);
+      response = response.data.recipe
+
+      // Upload image to cloudinary
+      const result = await cloudinary.uploader.upload(response.image, {folder: "easyRecipes"});
+
+
+      await Recipe.create({
+        title: response.name,
+        image: result.secure_url,
+        cloudinaryId: result.public_id,
+        servings: response.recipeYield,
+        cookTime: response.cookTime,
+        prepTime: response.prepTime,
+        totalTime: response.totalTime,
+        ingredients: response.recipeIngredients,
+        method: response.recipeIntructions,
+        likes: 0,
+        user: req.user.id,
+      });
+      console.log("Recipe has been added!");
+      res.redirect("/profile");
+    } catch (err) {
+      console.log(err);
+      console.log("Recipe unable to be added, please add manually")
+      res.redirect("/urlRecipeFail");
+    }
+  },
+
+  getFail: async (req, res) => {
+    try {
+      res.render("urlRecipeFail.ejs");
+    } catch (err) {
+      console.log(err);
+    }
+  },
+
   likeRecipe: async (req, res) => {
     try {
       await Recipe.findOneAndUpdate(
@@ -65,6 +123,7 @@ module.exports = {
       console.log(err);
     }
   },
+
   deleteRecipe: async (req, res) => {
     try {
       // Find post by id

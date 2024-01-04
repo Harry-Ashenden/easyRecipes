@@ -11,6 +11,7 @@ const connectDB = require("./config/database");
 const mainRoutes = require("./routes/main");
 const recipeRoutes = require("./routes/recipes");
 const commentRoutes = require("./routes/comments");
+const axios = require("axios");
 
 //Use .env file in config folder
 require("dotenv").config({ path: "./config/.env" });

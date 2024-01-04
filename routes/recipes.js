@@ -9,6 +9,10 @@ router.get("/:id", ensureAuth, recipesController.getRecipe);
 
 router.post("/createRecipe", upload.single("file"), recipesController.createRecipe);
 
+router.post("/createRecipeUrl", recipesController.createRecipeUrl);
+
+router.get("/urlRecipeFail", recipesController.getFail);
+
 router.put("/likeRecipe/:id", recipesController.likeRecipe);
 
 router.delete("/deleteRecipe/:id", recipesController.deleteRecipe);

@@ -26,6 +26,10 @@
                 <input type="text" class="form-control" id="cookTime" name="cookTime">
               </div>
               <div class="mb-3">
+                <label for="totalTime" class="form-label">Total time</label>
+                <input type="text" class="form-control" id="totalTime" name="totalTime">
+              </div>
+              <div class="mb-3">
                 <label for="ingredients" class="form-label">Ingredients</label>
                 <textarea placeholder="Enter the ingredients needed (1 per line)" class="form-control" id="ingredients" name="ingredients"></textarea>
                 <span>*Please input one ingredient per line</span>
@@ -43,6 +47,18 @@
             </form>
           </div>
       </div>
+      <div class="mt-5">
+        <h2>Add a recipe via a URL - just input the web address you found the recipe on.</h2>
+          <form action="/recipe/createRecipeUrl" enctype="form-data" method="POST">
+            <div class="mb-3">
+              <label for="recipeUrl" class="form-label">URL</label>
+              <input type="text" class="form-control" id="recipeUrl" name="recipeUrl">
+            </div>
+            <button type="submit" class="btn btn-primary" value="Upload">Submit</button>
+          </form>
+      </div>
+ 
+      
       <div class="col-6">
         <ul class="row list-unstyled">
         <% for(var i=0; i<recipes.length; i++) {%>
