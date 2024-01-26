@@ -13,7 +13,9 @@
           <button class="btn btn-primary fa fa-heart" type="submit"></button>
         </form>
         <h3 class="col-3">Likes: <%= recipe.likes %></h3>
+
         <%if(recipe.user == user.id){ %>
+        <a href="/recipe/recipeUpdate/<%= recipe.id%>"><button class="btn btn-primary fa fa-pen" type="button"></button></a>
         <form
           action="/recipe/deleteRecipe/<%= recipe.id %>?_method=DELETE"
           method="POST"
@@ -39,7 +41,7 @@
     <div class="col-3 mt-5">
       <p>Ingredients:</p>
       <ul>
-        <% for(var i=0; i<recipe.ingredients.length; i++) {%>
+        <% for(var i=0; i<recipe.ingredients.length; i++) { %>
           <li class="col-6 justify-content-between mt-5">
             <p><%= recipe.ingredients[i] %></p>
           </li>
@@ -49,11 +51,19 @@
     <div class="col-3 mt-5">
       <p>Methods:</p>
       <ol>
-        <% recipe.method.forEach((element, index, array) => {%>
+        <% if (recipe.method.some(value => {return typeof value == "object"}) == true) { %>
+          <% recipe.method.forEach((element, index, array) => {%>
           <li class="col-6 justify-content-between mt-5">
             <p><%= element.text %></p>
           </li>
-        <% }) %>
+          <% }) %>
+        <% } else { %>
+          <% for(var i=0; i<recipe.method.length; i++) {%>
+            <li class="col-6 justify-content-between mt-5">
+              <p><%= recipe.method[i] %></p>
+            </li>
+          <% } %>
+        <% } %>
       </ol>
     </div>
 

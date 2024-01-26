@@ -15,6 +15,10 @@ router.get("/urlRecipeFail", recipesController.getFail);
 
 router.put("/likeRecipe/:id", recipesController.likeRecipe);
 
+router.get("/recipeUpdate/:id", recipesController.getRecipeUpdate);
+
+router.post("/updateRecipe/:id", upload.single("file"), recipesController.updateRecipe);
+
 router.delete("/deleteRecipe/:id", recipesController.deleteRecipe);
 
 module.exports = router;
