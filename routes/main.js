@@ -15,6 +15,6 @@ router.get("/logout", authController.logout);
 router.get("/signup", authController.getSignup);
 router.post("/signup", authController.postSignup);
 router.get("/urlRecipeFail", recipesController.getFail);
-// router.get("/recipeUpdate/:id", recipesController.getRecipeUpdate);
+router.get("/addRecipe", ensureAuth, recipesController.getAddRecipe);
 
 module.exports = router;

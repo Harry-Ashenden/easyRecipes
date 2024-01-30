@@ -13,6 +13,14 @@ module.exports = {
       console.log(err);
     }
   },
+  getAddRecipe: async (req, res) => {
+    try {
+      const recipes = await Recipe.find({ user: req.user.id });
+      res.render("addRecipe.ejs", { recipes: recipes, user: req.user });
+    } catch (err) {
+      console.log(err);
+    }
+  },
   getFeed: async (req, res) => {
     try {
       const recipes = await Recipe.find().sort({ createdAt: "desc" }).lean();

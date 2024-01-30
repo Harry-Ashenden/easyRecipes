@@ -1,0 +1,58 @@
+<%- include('partials/header') -%>
+    
+<div class="container">
+    <div class="row mt-5">
+        <div class="col-6">
+            <div class="mt-5">
+              <h2>Add a recipe</h2>
+              <form action="/recipe/createRecipe" enctype="multipart/form-data" method="POST">
+                <div class="mb-3 form-floating">
+                  <input type="text" class="form-control" id="title" name="title" placeholder="Title">
+                  <label for="title" class="form-label">Title</label>
+                </div>
+                <div class="mb-3 form-floating">
+                  <input type="text" class="form-control" id="servings" name="servings" placeholder="Servings">
+                  <label for="servings" class="form-label">Servings</label>
+                </div>
+                <div class="mb-3 form-floating">
+                  <input type="text" class="form-control" id="prepTime" name="prepTime" placeholder="Prep Time">
+                  <label for="prepTime" class="form-label">Prep time (in mins)</label> 
+                </div>
+                <div class="mb-3 form-floating">
+                  <input type="text" class="form-control" id="cookTime" name="cookTime" placeholder="Cook Time">
+                  <label for="cookTime" class="form-label">Cook time (in mins)</label>
+                </div>
+                <div class="mb-3 form-floating">
+                  <input type="text" class="form-control" id="totalTime" name="totalTime" placeholder="Total Time">
+                  <label for="totalTime" class="form-label">Total time</label>
+                </div>
+                <div class="mb-3 form-label">
+                  <textarea placeholder="Ingredients (1 per line)" class="form-control" id="ingredients" name="ingredients" style="height: 100px"></textarea>
+                  <label for="ingredients" class="form-label">Ingredients</label>
+                  <span>*Please input one ingredient per line</span>
+                </div>
+                <div class="mb-3 form-label">
+                  <textarea placeholder="Method (1 step per line)" class="form-control" id="method" name="method" style="height: 100px"></textarea>
+                  <label for="method" class="form-label">Method</label>
+                  <span>*Please input one step per line</span>
+                </div>
+                <div class="mb-3">
+                  <label for="imgUpload" class="form-label">Image (.jpg, .jpeg, .png)</label>
+                  <input type="file" class="form-control" id="imageUpload" name="file" placeholder="Image Upload">
+                </div>
+                <button type="submit" class="btn btn-dark" value="Upload">Submit</button>
+              </form>
+            </div>
+        </div>
+        <div class="mt-5">
+          <h2>Add a recipe via a URL - just input the web address you found the recipe on.</h2>
+            <form action="/recipe/createRecipeUrl" enctype="form-data" method="POST">
+              <div class="mb-3 form-floating">
+                <input type="text" class="form-control" id="recipeUrl" name="recipeUrl" placeholder="Recipe Url">
+                <label for="recipeUrl" class="form-label">URL</label>
+              </div>
+              <button type="submit" class="btn btn-dark" value="Upload">Submit</button>
+            </form>
+        </div>
+
+<%- include('partials/footer') -%>
