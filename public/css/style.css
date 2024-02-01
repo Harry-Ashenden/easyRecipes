@@ -8,3 +8,8 @@
         aspect-ratio: 1/1;
     }
 }
+
+.form-control:focus {
+    border-color: #21252940;
+    box-shadow: 0 0 0 0.2rem rgba(34, 38, 42, 0.25);
+} 

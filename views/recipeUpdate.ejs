@@ -1,44 +1,43 @@
 <%- include('partials/header') -%>
 <div class="container">
-    <div class="row mt-5">
-        <div class="col-6">
-            <div class="mt-5">
-                <h2>Edit a recipe</h2>
+    <div class="row">
+        <div class="col-12">
+            <div class="mt-3">
+                <h2 class="mb-3">Edit <%= recipe.title %></h2>
                 <form action="/recipe/updateRecipe/<%= recipe.id %>" enctype="multipart/form-data" method="POST">
-                  <div class="mb-3">
-                      <label for="title" class="form-label">Title</label>
-                      <input type="text" class="form-control" id="title" name="title" value="<%= recipe.title %>">
+                  <div class="mb-3 form-floating">
+                    <input type="text" class="form-control" id="title" name="title" value="<%= recipe.title %>">
+                    <label for="title" class="form-label">Title</label>
                   </div>
-                  <div class="mb-3">
-                    <label for="servings" class="form-label">Servings</label>
+                  <div class="mb-3 form-floating">
                     <input type="text" class="form-control" id="servings" name="servings" value="<%= recipe.servings %>">
-                  </div><div class="mb-3">
-                      <label for="prepTime" class="form-label">Prep time (in mins)</label>
-                      <input type="text" class="form-control" id="prepTime" name="prepTime" value="<%= recipe.prepTime %>">
+                    <label for="servings" class="form-label">Servings</label>
                   </div>
-                  <div class="mb-3">
-                    <label for="cookTime" class="form-label">Cook time (in mins)</label>
+                  <div class="mb-3 form-floating">
+                    <input type="text" class="form-control" id="prepTime" name="prepTime" value="<%= recipe.prepTime %>">
+                    <label for="prepTime" class="form-label">Prep time (in mins)</label>
+                  </div>
+                  <div class="mb-3 form-floating">
                     <input type="text" class="form-control" id="cookTime" name="cookTime" value="<%= recipe.cookTime %>">
+                    <label for="cookTime" class="form-label">Cook time (in mins)</label>
                   </div>
-                  <div class="mb-3">
-                    <label for="totalTime" class="form-label">Total time</label>
+                  <div class="mb-3 form-floating">
                     <input type="text" class="form-control" id="totalTime" name="totalTime" value="<%= recipe.totalTime %>">
+                    <label for="totalTime" class="form-label">Total time</label>
                   </div>
                   <div class="mb-3">
-                    <label for="ingredients" class="form-label">Ingredients</label>
-                    <textarea placeholder="Enter the ingredients needed (1 per line)" class="form-control" id="ingredients" name="ingredients"><%=recipe.ingredients.join("\n") %></textarea>
+                    <textarea placeholder="Enter the ingredients needed (1 per line)" class="form-control" id="ingredients" name="ingredients" style="height: 200px"><%=recipe.ingredients.join("\n") %></textarea>
                     <span>*Please input one ingredient per line</span>
                   </div>
                   <div class="mb-3">
-                    <label for="method" class="form-label">Method</label>
-                    <textarea placeholder="Enter the method to follow (1 step per line)" class="form-control" id="method" name="method"><% if (recipe.method.some(value => {return typeof value == "object"}) == true) { %><% recipe.method.forEach((element, index, array) => {%><%=element.text + "\n"%><% }) %><% } else { %><%= recipe.method.join("\n") %><% } %></textarea>
+                    <textarea placeholder="Enter the method to follow (1 step per line)" class="form-control" id="method" name="method" style="height: 200px"><% if (recipe.method.some(value => {return typeof value == "object"}) == true) { %><% recipe.method.forEach((element, index, array) => {%><%=element.text + "\n"%><% }) %><% } else { %><%= recipe.method.join("\n") %><% } %></textarea>
                     <span>*Please input one step per line</span>
                   </div>
                   <div class="mb-3">
                     <label for="imgUpload" class="form-label">Update Image (.jpg, .jpeg, .png) (if no image added the original will be deleted)</label>
                     <input type="file" class="form-control" id="imageUpload" name="file">
                   </div>
-                  <button type="submit" class="btn btn-primary" value="Upload">Submit</button>
+                  <button type="submit" class="btn btn-dark" value="Upload">Submit</button>
                 </form>
             </div>
         </div>
