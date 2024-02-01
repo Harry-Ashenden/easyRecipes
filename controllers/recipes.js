@@ -41,7 +41,6 @@ module.exports = {
 
   createRecipe: async (req, res) => {
     try {
-      console.log(req.file)
       // Upload image to cloudinary
       const result = await cloudinary.uploader.upload(req.file.path, {folder: "easyRecipes"});
 
@@ -151,38 +150,51 @@ module.exports = {
 
   updateRecipe: async (req, res) => {
     try {
-      console.log(req)
-      console.log(req.body)
-      console.log(req.file)
       // Get recipe id
       let recipe = await Recipe.findById({ _id: req.params.id });
 
-      // // Delete image from cloudinary
-      await cloudinary.uploader.destroy(recipe.cloudinaryId);
-
-      // // Upload image to cloudinary
-      const result = await cloudinary.uploader.upload(req.file.path, {folder: "easyRecipes"});
-
-      // Update recipe
-      await Recipe.findOneAndUpdate(
-        { _id: req.params.id },
-        {
-          $set: {
-            title: req.body.title,
-            image: result.secure_url,
-            cloudinaryId: result.public_id,
-            servings: req.body.servings,
-            cookTime: req.body.cookTime,
-            prepTime: req.body.prepTime,
-            totalTime: req.body.totalTime,
-            ingredients: req.body.ingredients.split("\n"),
-            method: req.body.method.split("\n"),
-            // likes: 0,
-            // user: req.user.id,
+      if (!req.file) {
+        // Update recipe
+        await Recipe.findOneAndUpdate(
+          { _id: req.params.id },
+          {
+            $set: {
+              title: req.body.title,
+              servings: req.body.servings,
+              cookTime: req.body.cookTime,
+              prepTime: req.body.prepTime,
+              totalTime: req.body.totalTime,
+              ingredients: req.body.ingredients.split("\n"),
+              method: req.body.method.split("\n"),
+            }
           }
+        )
+        } else {
+          // Delete image from cloudinary
+          await cloudinary.uploader.destroy(recipe.cloudinaryId);
+
+          // Upload image to cloudinary
+          const result = await cloudinary.uploader.upload(req.file.path, {folder: "easyRecipes"});
+
+          // Update recipe
+          await Recipe.findOneAndUpdate(
+            { _id: req.params.id },
+            {
+              $set: {
+                title: req.body.title,
+                image: result.secure_url,
+                cloudinaryId: result.public_id,
+                servings: req.body.servings,
+                cookTime: req.body.cookTime,
+                prepTime: req.body.prepTime,
+                totalTime: req.body.totalTime,
+                ingredients: req.body.ingredients.split("\n"),
+                method: req.body.method.split("\n"),
+              }
+            }
+          )
         }
-      )
-         
+      
       // Redirect to recipe page
       console.log("Recipe has been edited!");
       res.redirect(`/recipe/${req.params.id}`);
