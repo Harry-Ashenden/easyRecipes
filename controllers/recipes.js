@@ -24,7 +24,7 @@ module.exports = {
   getFeed: async (req, res) => {
     try {
       const recipes = await Recipe.find().sort({ createdAt: "desc" }).lean();
-      res.render("feed.ejs", { recipes: recipes });
+      res.render("feed.ejs", { recipes: recipes, user: req.user });
     } catch (err) {
       console.log(err);
     }
@@ -57,6 +57,7 @@ module.exports = {
         method: req.body.method.split("\n"),
         likes: 0,
         user: req.user.id,
+        userName: req.user.userName,
       });
       console.log("Recipe has been added!");
       res.redirect("/profile");
@@ -104,6 +105,7 @@ module.exports = {
         method: response.recipeInstructions,
         likes: 0,
         user: req.user.id,
+        userName: req.user.userName,
       });
       console.log("Recipe has been added!");
       res.redirect("/profile");
@@ -116,7 +118,8 @@ module.exports = {
 
   getFail: async (req, res) => {
     try {
-      res.render("urlRecipeFail.ejs");
+      const recipes = await Recipe.find({ user: req.user.id });
+      res.render("urlRecipeFail.ejs", { user: req.user });
     } catch (err) {
       console.log(err);
     }

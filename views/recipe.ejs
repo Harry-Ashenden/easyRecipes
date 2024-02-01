@@ -1,94 +1,89 @@
 <%- include('partials/header') -%>
 <div class="container">
-  <div class="row justify-content-center mt-5">
-    <div class="col-6">
+  <div class="row justify-content-center mt-3">
+    <div class="col-sm-12 text-center">
       <h2><%= recipe.title %></h2>
-      <img class="img-fluid" src="<%= recipe.image%>" />
-      <div class="row justify-content-between">
-        <form
-          class="col-1"
-          action="/recipe/likeRecipe/<%= recipe.id %>?_method=PUT"
-          method="POST"
-        >
-          <button class="btn btn-primary fa fa-heart" type="submit"></button>
+      <div class="col-sm-6 mx-auto d-block">
+       <img class="img-fluid mt-2 rounded" src="<%= recipe.image%>" />
+      </div>
+      <div class="row justify-content-center text-center align-items-center mt-4">
+        <div class="row col-md-5 text-center">
+        <form class="col-3" action="/recipe/likeRecipe/<%= recipe.id %>?_method=PUT" method="POST">
+          <button class="btn btn-dark fa fa-heart" type="submit"></button>
         </form>
-        <h3 class="col-3">Likes: <%= recipe.likes %></h3>
-
+        <span class="col-3"><b>Likes: <%= recipe.likes %></b></span>
         <%if(recipe.user == user.id){ %>
-        <a href="/recipe/recipeUpdate/<%= recipe.id%>"><button class="btn btn-primary fa fa-pen" type="button"></button></a>
-        <form
-          action="/recipe/deleteRecipe/<%= recipe.id %>?_method=DELETE"
-          method="POST"
-          class="col-3"
-        >
-          <button class="btn btn-primary fa fa-trash" type="submit"></button>
+        <a href="/recipe/recipeUpdate/<%= recipe.id%>" class="col-3">
+          <button class="btn btn-dark fa fa-pen" type="button"></button>
+        </a>
+        <form class="col-3" action="/recipe/deleteRecipe/<%= recipe.id %>?_method=DELETE" method="POST" >
+          <button class="btn btn-dark fa fa-trash" type="submit"></button>
         </form>
         <%}%>
+        </div>
       </div>
     </div>
-    <div class="col-3 mt-5">
-      <p>Servings: <%= recipe.servings %></p>
+    <div class="col-sm-3 mt-4 mt-md-2">
+      <p><b>Servings:</b> <%= recipe.servings %></p>
     </div>
-    <div class="col-3 mt-5">
-      <p>Prep Time: <%= recipe.prepTime %></p>
+    <div class="col-sm-3 mt-2">
+      <p><b>Prep Time:</b> <%= recipe.prepTime %></p>
     </div>
-    <div class="col-3 mt-5">
-      <p>Cook Time: <%= recipe.cookTime %></p>
+    <div class="col-sm-3 mt-2">
+      <p><b>Cook Time:</b> <%= recipe.cookTime %></p>
     </div>
-    <div class="col-3 mt-5">
-      <p>Total Time: <%= recipe.totalTime %></p>
+    <div class="col-sm-3 mt-2">
+      <p><b>Total Time:</b> <%= recipe.totalTime %></p>
     </div>
-    <div class="col-3 mt-5">
-      <p>Ingredients:</p>
+    <div class="col-sm-3 col-md-5 mt-2">
+      <p><b>Ingredients:</b></p>
       <ul>
         <% for(var i=0; i<recipe.ingredients.length; i++) { %>
-          <li class="col-6 justify-content-between mt-5">
+          <li class="col-sm-12 justify-content-between mt-2">
             <p><%= recipe.ingredients[i] %></p>
           </li>
         <% } %>
       </ul>
     </div>
-    <div class="col-3 mt-5">
-      <p>Methods:</p>
+    <div class="col-sm-3 col-md-5 mt-2">
+      <p><b>Methods:</b></p>
       <ol>
         <% if (recipe.method.some(value => {return typeof value == "object"}) == true) { %>
           <% recipe.method.forEach((element, index, array) => {%>
-          <li class="col-6 justify-content-between mt-5">
+          <li class="col-sm-12 justify-content-between mt-2">
             <p><%= element.text %></p>
           </li>
           <% }) %>
         <% } else { %>
           <% for(var i=0; i<recipe.method.length; i++) {%>
-            <li class="col-6 justify-content-between mt-5">
+            <li class="col-sm-12 justify-content-between mt-2">
               <p><%= recipe.method[i] %></p>
             </li>
           <% } %>
         <% } %>
       </ol>
     </div>
-
-    <div class="mt-5">
-      <h2>Add a Comment</h2>
-      <form action="/comment/createComment/<%=recipe._id%>" method="POST">
-        <div class="mb-3">
-            <label for="comment" class="form-label">Comment</label>
-            <input type="text" class="form-control" id="comment" name="comment">
-        </div>
-        
-        <button type="submit" class="btn btn-primary">Submit</button>
-      </form>
+    <div class="mt-4">
+      <h3>Comments</h3>
+      <ul>
+        <% for(var i=0; i<comments.length; i++) {%>
+          <li class="col-sm-6 justify-content-between mt-2">
+            <blockquote class="blockquote">
+              <p><%= comments[i].comment %></p>
+            </blockquote>
+            <footer class="blockquote-footer">User name here</footer>
+          </li>
+        <% } %>
+      </ul>
     </div>
-
-    <ul>
-      <% for(var i=0; i<comments.length; i++) {%>
-        <li class="col-6 justify-content-between mt-5">
-          <p><%= comments[i].comment %></p>
-        </li>
-      <% } %>
-    </ul>
-    <div class="col-6 mt-5">
-      <a class="btn btn-primary" href="/profile">Return to Profile</a>
-      <a class="btn btn-primary" href="/feed">Return to Feed</a>
+    <div class="mt-2">
+      <form action="/comment/createComment/<%=recipe._id%>" method="POST">
+        <div class="mb-3 form-floating">
+          <input type="text" class="form-control" id="comment" name="comment" placeholder="Add a comment">
+          <label for="comment" class="form-label">Comment</label>
+        </div>
+        <button type="submit" class="btn btn-dark">Submit</button>
+      </form>
     </div>
   </div>
 </div>
