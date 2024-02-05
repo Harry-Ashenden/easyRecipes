@@ -15,7 +15,7 @@ Once the functionality was in place, I began creating the front-end views with E
 
 After the project was mostly completed, it was then hosted using Cyclic which enabled easy cross browser testing. Some changes to the design were made to ensure usablity and now EasyRecipes is being used to store, view, add, and edit recipes!
 
-## Optimizations
+## Optimizations:
 
 There are still many features which would be desirable to add to EasyRecipes over time such as multiple image uploads, profile pictures, even recipe exporting to create personal cookbooks that can be printed. All of these optimizations will hopefully added in the future and the current code be refactored down.
 
