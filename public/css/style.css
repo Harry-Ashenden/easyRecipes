@@ -12,4 +12,8 @@
 .form-control:focus {
     border-color: #21252940;
     box-shadow: 0 0 0 0.2rem rgba(34, 38, 42, 0.25);
-} 
+}
+
+p {
+    font-size: 1.25rem;
+}
