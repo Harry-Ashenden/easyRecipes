@@ -1,12 +1,37 @@
 .img-fit {
-    aspect-ratio: 16/9;
-    height: 100%;
+    aspect-ratio: 16 / 9;
     object-fit: cover;
+    @supports not (aspect-ratio: 16 / 9) {
+        &::before {
+          float: left;
+          padding-top: 56.25%;
+          content: "";
+        }
+    
+        &::after {
+          display: block;
+          content: "";
+          clear: both;
+        }
+      }
 }
 
 @media (max-width: 767.98px) {
     .img-fit {
-        aspect-ratio: 1/1;
+        aspect-ratio: 1 / 1;
+        @supports not (aspect-ratio: 1 / 1) {
+            &::before {
+              float: left;
+              padding-top: 100%;
+              content: "";
+            }
+        
+            &::after {
+              display: block;
+              content: "";
+              clear: both;
+            }
+          }
     }
 }
 
