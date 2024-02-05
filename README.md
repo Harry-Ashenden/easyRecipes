@@ -1,25 +1,24 @@
-[easyRecipes](https://easyrecipies.cyclic.app)
-
 # easyRecipes
 This responsive full-stack web app is a one-stop place for users to store their recipes and access them in a no-fuss way. The site allows users to add recipes from their favourite websites using an API or manually if they haeva favourite family recipe. Users can view, update, comment, like, delete recipes anytime with ease.
 
-**Link to project:** https://easyrecipies.cyclic.app
+**Link to project:** https://easyrecipes.cyclic.app
 
-![gif of the website](https://github.com/Harry-Ashenden/Nasa-Photo-of-the-Day/blob/main/assets/gif/NASA%20API.gif)
+<!-- ![gif of the website](https://github.com/Harry-Ashenden/Nasa-Photo-of-the-Day/blob/main/assets/gif/NASA%20API.gif) -->
 
 ## How It's Made:
 
-**Tech used:** EJS, Bootstrap, CSS, Node.js, Express, and MongoDB
+**Tech used:** EJS, Bootstrap, CSS, Node.js, Express, MongoDB, and API's
 
-I began with the HTML creating 3 main sections: date input, description area, media area. Once these were created I started writing the backbone JS which included the fetch to NASA's API. From here I selected the correct data parts from the resulting JSON and placed them back into the DOM. After the site was a functioning MVP I began the styling. I used flexbox to create the page splits whcihc also ensured the page would be responsive. I chose a font and styled the button to have a hover effect. Lastly I used media queries in CSS to ensure every element would show correctly on a tablet on mobile. This involved changing the flexbox to columns and the overflow-y to scroll. 
+I intially began this project by creating a wireframe depicting everything from the layout to functionality with a priority ordered list. I then began using a barebones social media project I had created prior to this project. I was able to adapt the routes and controllers to create the basic pathways and functionality. From here I then added the extra features I needed such as the necessary modals to support a recipe from MongoDB, links to external API's to scrape recipe sites, and image uploads.
 
-The JS could then be refactored and added to by correctly checking for error codes and making the user aware what was wrong (such as chosing a date in the future).
+Once the functionality was in place, I began creating the front-end views with EJS and linking them to the back-end Node.js/Express contorllers. Some of this required the necessary middleware for the authentication, image handling, and image database. The front-end was then styled using Bootstrap to enable a mobile-first responsive design and some minor CSS to handle more custom aspects. 
+
+After the project was mostly completed, it was then hosted using Cyclic which enabled easy cross browser testing. Some changes to the design were made to ensure usablity and now EasyRecipes is being used to store, view, add, and edit recipes!
 
 ## Optimizations
 
-To further enhance this project if there was more time, I would have used a secondary API to show the curretn cycle of the moon. This would be shown as a top nav bar allowing the user to always see the information.  
+There are still many features which would be desirable to add to EasyRecipes over time such as multiple image uploads, profile pictures, even recipe exporting to create personal cookbooks that can be printed. All of these optimizations will hopefully added in the future and the current code be refactored down.
 
 ## Lessons Learned:
 
-The main lesson learned on this project was that by abstracting sections of code into their own functions when writing JS will provide much more readable code. Initially I wrote everything in the fetch to get it working but long conditionals were horrible to read. Also I learned templates can be useful for design, but there is something very satisfying about putting together a page from scratch. It also allows more flexibility as oyu don't have to deal with preset style.
-
+This whole project was a learning curve from understanding how a full-stack app is put together from the gorund up. One of the biggest take-aways from the projetc is the best way to construct an optimised structure so requests are handled correctly and debugging can be done quickly. Outside of that putting into practice technology such as MongoDB, Bootstrap, Multer and more has vastly improved my knowledge of choosing the right tech for the right job.
