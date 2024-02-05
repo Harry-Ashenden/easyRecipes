@@ -26,11 +26,11 @@
                     <label for="totalTime" class="form-label">Total time</label>
                   </div>
                   <div class="mb-3">
-                    <textarea placeholder="Enter the ingredients needed (1 per line)" class="form-control" id="ingredients" name="ingredients" style="height: 200px"><%=recipe.ingredients.join("\n") %></textarea>
+                    <textarea placeholder="Enter the ingredients needed (1 per line)" class="form-control" id="ingredients" name="ingredients" style="height: 250px"><%=recipe.ingredients.join("\n") %></textarea>
                     <span>*Please input one ingredient per line</span>
                   </div>
                   <div class="mb-3">
-                    <textarea placeholder="Enter the method to follow (1 step per line)" class="form-control" id="method" name="method" style="height: 200px"><% if (recipe.method.some(value => {return typeof value == "object"}) == true) { %><% recipe.method.forEach((element, index, array) => {%><%=element.text + "\n"%><% }) %><% } else { %><%= recipe.method.join("\n") %><% } %></textarea>
+                    <textarea placeholder="Enter the method to follow (1 step per line)" class="form-control" id="method" name="method" style="height: 250px"><% if (recipe.method.some(value => {return typeof value == "object"}) == true) { %><% recipe.method.forEach((element, index, array) => {%><%=element.text + "\n"%><% }) %><% } else { %><%= recipe.method.join("\n") %><% } %></textarea>
                     <span>*Please input one step per line</span>
                   </div>
                   <div class="mb-3">
