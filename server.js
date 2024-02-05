@@ -12,6 +12,7 @@ const mainRoutes = require("./routes/main");
 const recipeRoutes = require("./routes/recipes");
 const commentRoutes = require("./routes/comments");
 const axios = require("axios");
+var bodyParser = require('body-parser');
 
 //Use .env file in config folder
 require("dotenv").config({ path: "./config/.env" });
@@ -26,8 +27,12 @@ app.set("view engine", "ejs");
 app.use(express.static("public"));
 
 //Body Parsing
-app.use(express.urlencoded({ extended: true, limit: '50mb' }));
-app.use(express.json({limit: '50mb'}));
+// app.use(express.urlencoded({ extended: true}));
+// app.use(express.json({limit: '50mb'}));
+
+
+app.use(bodyParser.json({limit: '50mb'}));
+app.use(bodyParser.urlencoded({limit: '50mb', extended: true}));
 
 //Logging
 app.use(logger("dev"));
