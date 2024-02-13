@@ -1,5 +1,5 @@
 # easyRecipes
-This responsive full-stack web app is a one-stop place for users to store their recipes and access them in a no-fuss way. The site allows users to add recipes from their favourite websites using an API or manually if they have favourite family recipe. Users can view, update, comment, like, delete recipes anytime with ease.
+This responsive full-stack web app is a one-stop place for users to store their recipes and access them in a no-fuss way. The site allows users to add recipes from their favourite websites using an API or manually if they have a favourite family recipe. Users can view, update, comment, like, delete recipes anytime with ease.
 
 **Link to project:** https://easyrecipes.cyclic.app
 
@@ -9,11 +9,11 @@ This responsive full-stack web app is a one-stop place for users to store their 
 
 **Tech used:** EJS, Bootstrap, CSS, Node.js, Express, MongoDB, and API's
 
-I intially began this project by creating a wireframe depicting everything from the layout to functionality with a priority ordered list. I then began using a barebones social media project I had created prior to this project. I was able to adapt the routes and controllers to create the basic pathways and functionality. From here I then added the extra features I needed such as the necessary modals to support a recipe from MongoDB, links to external API's to scrape recipe sites, and image uploads.
+I intially began this project by creating a wireframe depicting everything from the layout to functionality with a priority ordered list. I then began using a barebones social media project I had created prior to this project. I was able to adapt the routes and controllers to create the basic pathways and functionality. From here I then added the extra features I needed such as the necessary modals to support a recipe for MongoDB, links to external API's to scrape recipe sites, and image uploads with Multer.
 
-Once the functionality was in place, I began creating the front-end views with EJS and linking them to the back-end Node.js/Express contorllers. Some of this required the necessary middleware for the authentication, image handling, and image database. The front-end was then styled using Bootstrap to enable a mobile-first responsive design and some minor CSS to handle more custom aspects. 
+Once the functionality was in place, I began creating the front-end views with EJS and linking them to the back-end Node.js/Express controllers. Some of this required the necessary middleware for the authentication, image handling, and image database. The front-end was then styled using Bootstrap to enable a mobile-first responsive design and some minor CSS to handle more custom aspects. 
 
-After the project was mostly completed, it was then hosted using Cyclic which enabled easy cross browser testing. Some changes to the design were made to ensure usablity and now EasyRecipes is being used to store, view, add, and edit recipes!
+After the project was completed, it was then hosted using Cyclic which enabled easy cross browser testing. Some changes to the design were made to ensure usablity and now EasyRecipes is being used to store, view, add, and edit recipes!
 
 ## Optimizations:
 
@@ -21,4 +21,4 @@ There are still many features which would be desirable to add to EasyRecipes ove
 
 ## Lessons Learned:
 
-This whole project was a learning curve from understanding how a full-stack app is put together from the gorund up. One of the biggest take-aways from the projetc is the best way to construct an optimised structure so requests are handled correctly and debugging can be done quickly. Outside of that putting into practice technology such as MongoDB, Bootstrap, Multer and more has vastly improved my knowledge of choosing the right tech for the right job.
+This whole project was a learning curve from understanding how a full-stack app is put together from the gorund up. One of the biggest take-aways from the project is the best way to construct an optimised structure so requests are handled correctly and debugging can be done quickly. Outside of the structure, putting into practice technology such as MongoDB, Bootstrap, Multer and more has vastly improved my knowledge of choosing the right tech for the right job.
