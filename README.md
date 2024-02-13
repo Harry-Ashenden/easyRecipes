@@ -1,9 +1,9 @@
 # easyRecipes
-This responsive full-stack web app is a one-stop place for users to store their recipes and access them in a no-fuss way. The site allows users to add recipes from their favourite websites using an API or manually if they haeva favourite family recipe. Users can view, update, comment, like, delete recipes anytime with ease.
+This responsive full-stack web app is a one-stop place for users to store their recipes and access them in a no-fuss way. The site allows users to add recipes from their favourite websites using an API or manually if they have favourite family recipe. Users can view, update, comment, like, delete recipes anytime with ease.
 
 **Link to project:** https://easyrecipes.cyclic.app
 
-<!-- ![gif of the website](https://github.com/Harry-Ashenden/Nasa-Photo-of-the-Day/blob/main/assets/gif/NASA%20API.gif) -->
+![gif of the website](https://github.com/Harry-Ashenden/easyRecipes/blob/main/gif/easyRecipes.gif)
 
 ## How It's Made:
 
