@@ -7,7 +7,9 @@ const flash = require('express-flash');
 module.exports = {
   getProfile: async (req, res) => {
     try {
+      // Find user Id from request body
       const recipes = await Recipe.find({ user: req.user.id });
+      // Render profile page using user to ensure correct recipes load
       res.render("profile.ejs", { recipes: recipes, user: req.user });
     } catch (err) {
       console.log(err);
@@ -43,7 +45,7 @@ module.exports = {
     try {
       // Upload image to cloudinary
       const result = await cloudinary.uploader.upload(req.file.path, {folder: "easyRecipes"});
-
+      // Create recipe in schema using form inputs and split the text area by new line into array
       await Recipe.create({
         title: req.body.title,
         image: result.secure_url,
@@ -66,7 +68,7 @@ module.exports = {
   },
   createRecipeUrl: async (req, res) => {
     try {
-
+      // Recipe API with form input as the parameter
       let recipeUrlApi = {
         method: 'GET',
         url: 'https://cookr-recipe-parser.p.rapidapi.com/getRecipe',
@@ -126,6 +128,7 @@ module.exports = {
 
   likeRecipe: async (req, res) => {
     try {
+      // Find the recipe in the DB and update the likes with additional 1
       await Recipe.findOneAndUpdate(
         { _id: req.params.id },
         {
@@ -153,6 +156,7 @@ module.exports = {
       // Get recipe id
       let recipe = await Recipe.findById({ _id: req.params.id });
 
+      // Check to saee if there is an image uploaded, if no don't update image or delete previous
       if (!req.file) {
         // Update recipe
         await Recipe.findOneAndUpdate(

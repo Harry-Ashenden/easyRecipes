@@ -4,6 +4,7 @@
   <div class="row my-3 text-center">
     <h2>My Recipes</h2>
   </div>
+  <!-- Loop through all recipes added by the user only and display with cards, image and title -->
   <div class="row g-3">
     <% for(var i=0; i<recipes.length; i++) {%>
     <div class="col-12 col-md-6 col-lg-4">
@@ -13,7 +14,6 @@
         </a>
         <div class="card-body">
           <h6 class="card-title"><%= recipes[i].title%></h6>
-          <!-- <p class="card-text">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quaerat, possimus? Natus nihil ipsum tenetur fugiat.</p> -->
         </div>
       </div>
     </div>

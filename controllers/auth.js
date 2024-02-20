@@ -65,6 +65,7 @@ exports.getSignup = (req, res) => {
   });
 };
 
+// Validation for email or password
 exports.postSignup = (req, res, next) => {
   const validationErrors = [];
   if (!validator.isEmail(req.body.email))
@@ -90,6 +91,7 @@ exports.postSignup = (req, res, next) => {
     password: req.body.password,
   });
 
+  // Check to see if there is a user with the username or email already on the system, if rejected, redirect to sign up again
   User.findOne(
     { $or: [{ email: req.body.email }, { userName: req.body.userName }] },
     (err, existingUser) => {

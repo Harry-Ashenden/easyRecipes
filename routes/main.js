@@ -5,7 +5,7 @@ const homeController = require("../controllers/home");
 const recipesController = require("../controllers/recipes");
 const { ensureAuth, ensureGuest } = require("../middleware/auth");
 
-//Main Routes - simplified for now
+//Main Routes
 router.get("/", homeController.getIndex);
 router.get("/profile", ensureAuth, recipesController.getProfile);
 router.get("/feed", ensureAuth, recipesController.getFeed);

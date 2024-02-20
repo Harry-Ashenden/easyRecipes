@@ -1,19 +1,23 @@
+/* Changing aspect ratio to keep the images standardised */
 .img-fit {
     aspect-ratio: 16 / 9;
     object-fit: cover;
 }
 
+/* Changing aspect ratio to work on mobile better */
 @media (max-width: 767.98px) {
     .img-fit {
         aspect-ratio: 1 / 1;
     }
 }
 
+/* Form border on click */
 .form-control:focus {
     border-color: #21252940;
     box-shadow: 0 0 0 0.2rem rgba(34, 38, 42, 0.25);
 }
 
+/* Font size change */
 p {
     font-size: 1.25rem;
 }

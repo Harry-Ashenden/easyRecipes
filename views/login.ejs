@@ -39,6 +39,7 @@
 </header>
 <main class="container">
   <div class="row justify-content-center">
+    <!-- Error message handling -->
     <section class="col-sm-12 col-md-6 mt-5">
       <% if (locals.messages.errors) { %> <% messages.errors.forEach( el => { %>
       <div class="alert alert-danger"><%= el.msg %></div>
