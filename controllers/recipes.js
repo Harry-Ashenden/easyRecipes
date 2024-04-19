@@ -8,7 +8,7 @@ module.exports = {
   getProfile: async (req, res) => {
     try {
       // Find user Id from request body
-      const recipes = await Recipe.find({ user: req.user.id });
+      const recipes = await Recipe.find({ user: req.user.id }).sort({ createdAt: "desc" }).lean();
       // Render profile page using user to ensure correct recipes load
       res.render("profile.ejs", { recipes: recipes, user: req.user });
     } catch (err) {
